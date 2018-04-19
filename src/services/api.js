@@ -19,6 +19,17 @@ const fetchClient = () => {
     return config
   })
 
+  instance.interceptors.response.use(response => {
+    return response
+  }, error => {
+    if (error.response.status === 401) {
+      // logica de redirect aqui
+
+    } else {
+      return Promise.reject(error)
+    }
+  })
+
   return instance
 }
 
