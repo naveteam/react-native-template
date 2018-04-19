@@ -5,10 +5,7 @@ const __API__ = ''
 
 const fetchClient = () => {
   const defaultOptions = {
-    baseURL: __API__,
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    baseURL: __API__
   }
 
   let instance = axios.create(defaultOptions)
