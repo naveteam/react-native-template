@@ -7,13 +7,17 @@
     "jest": "^23.4.1",
     "jest-react-native": "^18.0.0",
     "react-test-renderer": "16.3.0-alpha.1",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "prettier-standard": "^8.0.1"
   },
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged"
   },
   "jest": {
     "preset": "react-native"
@@ -23,6 +27,14 @@
     "react": "^16.4.1",
     "react-native": "^0.56.0",
     "react-navigation": "^2.9.1"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
+    }
   },
   "standard": {
     "ignore": [
