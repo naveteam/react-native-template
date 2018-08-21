@@ -4,10 +4,6 @@ Este projeto foi iniciado com [Create React Native App](https://github.com/react
 
 Da *start* na aplicação.
 
-#### `yarn run eject`
-
-Para usar módulos nativos.
-
 ## Observações
 
 Os pacotes usados para configuração do `redux` não estão instalados.
