@@ -1,16 +1,16 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+// import { Provider } from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native'
-import store from './src/store/configureStore'
+// import store from './src/store/configureStore'
 
 export default class App extends React.Component {
   render () {
     return (
-      <Provider store={store}>
+      // <Provider store={store}>
         <View style={styles.container}>
           <Text>Boilerplate padrão!</Text>
         </View>
-      </Provider>
+      // </Provider>
     )
   }
 }
