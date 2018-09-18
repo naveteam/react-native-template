@@ -1,3 +1,4 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
-AppRegistry.registerComponent('boilerplate', () => App);
+import { AppRegistry } from 'react-native'
+import App from './App'
+console.disableYellowBox = true
+AppRegistry.registerComponent('boilerplate', () => App)
