@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native'
 import { create } from 'react-test-renderer'
-import 'jest-styled-components'
 
 import Button from '../Button'
 
