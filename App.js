@@ -1,25 +1,27 @@
 import React from 'react'
-// import { Provider } from 'react-redux'
-import { StyleSheet, Text, View } from 'react-native'
+import { Provider } from 'react-redux'
+import styled from 'styled-components'
 // import store from './src/store/configureStore'
+
+const BgBlack = styled.View`
+  background-color: #000;
+  flex: 1;
+  align-items: center;
+  justify-content: center
+`
+
+const TextWhite = styled.Text`
+  color: white
+`
 
 export default class App extends React.Component {
   render () {
     return (
       // <Provider store={store}>
-        <View style={styles.container}>
-          <Text>Boilerplate padrão!</Text>
-        </View>
+      <BgBlack>
+        <TextWhite>Boilerplate padrão!</TextWhite>
+      </BgBlack>
       // </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
