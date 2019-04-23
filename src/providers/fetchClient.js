@@ -10,22 +10,24 @@ const fetchClient = () => {
 
   let instance = axios.create(defaultOptions)
 
-  instance.interceptors.request.use(async (config) => {
+  instance.interceptors.request.use(async config => {
     const token = await AsyncStorage.getItem('token')
     config.headers.Authorization = token ? `Bearer ${token}` : ''
     return config
   })
 
-  instance.interceptors.response.use(response => {
-    return response
-  }, error => {
-    if (error.response.status === 401) {
-      // logica de redirect aqui
-
-    } else {
-      return Promise.reject(error)
+  instance.interceptors.response.use(
+    response => {
+      return response
+    },
+    error => {
+      if (error.response.status === 401) {
+        // logica de redirect aqui
+      } else {
+        return Promise.reject(error)
+      }
     }
-  })
+  )
 
   return instance
 }
