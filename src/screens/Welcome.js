@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../components/commom/Button'
+import Button from 'src/components/commom/Button'
 
 const BgBlack = styled.View`
   background-color: #000;
