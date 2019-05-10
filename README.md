@@ -1,10 +1,14 @@
-Nave boilerplate.
+# Nave boilerplate.
+
+## Install
+
+`yarn` or `npm i`
 
 
-Run
+## Run
 
 `yarn ios` or `yarn android`
 
-To commit run:
+## To commit run:
 
-`yarn commit`
+`yarn commit` or `npm commit` and answer the questions will appear
