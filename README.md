@@ -4,19 +4,13 @@
 
 Run `react-native init yourProjectName --template nave`
 
-
 ### Packages already configured
 
-- Redux
-- React redux
 - Styled components
 - React Navigation
-- Redux logger
-- Redux Thunk
 - Axios
 - Reactotron
 - Commitlint
-
 
 ## Finishing configuration
 
@@ -40,7 +34,6 @@ Add this to your `package.json`
     }
   }
 ```
-
 
 Copyright 2019 nave.rs
 
