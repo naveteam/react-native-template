@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from 'src/components/commom/Button'
+
+import { Button } from 'src/components'
 
 const BgBlack = styled.View`
   background-color: #000;
@@ -13,9 +14,9 @@ const TextWhite = styled.Text`
   color: white;
 `
 
-export default () => (
+export default ({ navigation }) => (
   <BgBlack>
-    <TextWhite>Boilerplate padrão!</TextWhite>
-    <Button name='Olá' />
+    <TextWhite>Profile screen</TextWhite>
+    <Button text='go to home' onPress={() => navigation.navigate('Home')} />
   </BgBlack>
 )

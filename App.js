@@ -1,27 +1,26 @@
 import React from 'react'
-import { createStackNavigator, createAppContainer } from 'react-navigation'
-import Welcome from 'src/screens/Welcome'
-// import store from './src/store/configureStore'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { Home, Profile } from 'src/screens'
 
 if (__DEV__) {
   import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
 }
 
-const RootStack = createAppContainer(
-  createStackNavigator(
-    {
-      Welcome: {
-        screen: Welcome
-      }
-    },
-    {
-      headerMode: 'none'
-    }
-  )
-)
+const Stack = createStackNavigator()
 
-export default class App extends React.Component {
-  render() {
-    return <RootStack />
-  }
+const App = props => {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Profile' component={Profile} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  )
 }
+
+export default App

@@ -13,8 +13,8 @@ const ButtonText = styled.Text`
   color: #000;
 `
 
-export default ({ bg, name }) => (
-  <Button>
-    <ButtonText bg={bg}>{name}, Bem vindo</ButtonText>
+export default ({ bg, text, ...props }) => (
+  <Button {...props}>
+    <ButtonText bg={bg}>{text}</ButtonText>
   </Button>
 )
