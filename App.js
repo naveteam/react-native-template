@@ -1,26 +1,34 @@
 import React from 'react'
+import { Text } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { Home, Profile } from 'src/screens'
+
+import { AppProviders, useUser } from 'src/context'
+
+import AuthenticatedApp from './AuthenticatedApp'
+import UnauthenticatedApp from './UnauthenticatedApp'
 
 if (__DEV__) {
   import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
 }
 
-const Stack = createStackNavigator()
-
 const App = props => {
+  const { isFetchingUser, user } = useUser()
+
+  console.log('isFetchingUser', isFetchingUser)
+  if (isFetchingUser) {
+    return <Text>Carregando...</Text>
+  }
+
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name='Home' component={Home} />
-          <Stack.Screen name='Profile' component={Profile} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <NavigationContainer>{user ? <AuthenticatedApp /> : <UnauthenticatedApp />}</NavigationContainer>
     </SafeAreaProvider>
   )
 }
 
-export default App
+export default () => (
+  <AppProviders>
+    <App />
+  </AppProviders>
+)

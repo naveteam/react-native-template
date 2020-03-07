@@ -1,35 +1,27 @@
 import axios from 'axios'
-import { AsyncStorage } from 'react-native'
 
-const __API__ = ''
+import { getToken } from 'src/utils'
+import { API_URL } from 'src/constants'
 
-const fetchClient = () => {
-  const defaultOptions = {
-    baseURL: __API__
-  }
+const provider = axios.create({
+  baseURL: process.env.API_URL || API_URL
+})
 
-  let instance = axios.create(defaultOptions)
+provider.interceptors.request.use(async ({ headers, ...config }) => {
+  const token = await getToken()
 
-  instance.interceptors.request.use(async config => {
-    const token = await AsyncStorage.getItem('token')
-    config.headers.Authorization = token ? `Bearer ${token}` : ''
-    return config
-  })
-
-  instance.interceptors.response.use(
-    response => {
-      return response
-    },
-    error => {
-      if (error.response.status === 401) {
-        // logica de redirect aqui
-      } else {
-        return Promise.reject(error)
-      }
+  return {
+    ...config,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`
     }
-  )
+  }
+})
 
-  return instance
-}
+provider.interceptors.response.use(
+  response => response.data,
+  err => Promise.reject(err.response.data)
+)
 
-export default fetchClient()
+export default provider

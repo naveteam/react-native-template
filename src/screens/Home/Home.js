@@ -1,22 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+import { Text } from 'react-native'
 
-import { Button } from 'src/components'
+import { Column, Button } from 'src/components'
+import { useUser } from 'src/context'
 
-const BgBlack = styled.View`
-  background-color: #000;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`
+const HomeScreen = ({ navigation }) => {
+  const { logout } = useUser()
+  return (
+    <Column flex={1} justifyContent='center' p={40}>
+      <Text>Home!</Text>
+      <Button text='go to profile' onPress={() => navigation.navigate('Profile')} mb={20} />
+      <Button text='sair' onPress={logout} />
+    </Column>
+  )
+}
 
-const TextWhite = styled.Text`
-  color: white;
-`
-
-export default ({ navigation }) => (
-  <BgBlack>
-    <TextWhite>Boilerplate padrão!</TextWhite>
-    <Button text='go to profile' onPress={() => navigation.navigate('Profile')} />
-  </BgBlack>
-)
+export default HomeScreen
