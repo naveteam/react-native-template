@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Text } from 'react-native'
+import { space, layout, color } from 'styled-system'
 import styled from 'styled-components'
-
-import { parseModifiers } from 'src/utils'
 
 const ButtonComponent = ({ text, ...props }) => (
   <Button {...props}>
@@ -12,16 +11,17 @@ const ButtonComponent = ({ text, ...props }) => (
 )
 
 const Button = styled.TouchableOpacity`
-  color: black;
   padding: 10px;
   border-radius: 4px;
-  background-color: ${props => props.color || 'white'};
-  ${props => parseModifiers(props)}
+  background-color: white;
+  align-items: center;
+  ${space}
+  ${layout}
+  ${color}
 `
 
 ButtonComponent.propTypes = {
-  text: PropTypes.string,
-  color: PropTypes.string
+  text: PropTypes.string
 }
 
 export default ButtonComponent
