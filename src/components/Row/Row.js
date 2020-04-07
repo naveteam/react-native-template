@@ -1,17 +1,7 @@
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react'
 
 import { Column } from '../Column'
 
-const RowComponent = styled(Column)`
-  flex-direction: row;
-`
-
-RowComponent.propTypes = {
-  flex: PropTypes.number,
-  flexWrap: PropTypes.bool,
-  alignItems: PropTypes.string,
-  justifyContent: PropTypes.string
-}
+const RowComponent = (props) => <Column flexDirection='row' {...props} />
 
 export default RowComponent

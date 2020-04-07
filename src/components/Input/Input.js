@@ -1,8 +1,7 @@
+import { space, layout, typography, color } from 'styled-system'
 import styled from 'styled-components'
 
-import { parseModifiers } from 'src/utils'
-
-const InputComponent = styled.TextInput.attrs(props => ({
+const InputComponent = styled.TextInput.attrs((props) => ({
   autoCapitalize: 'none',
   ...props
 }))`
@@ -10,7 +9,10 @@ const InputComponent = styled.TextInput.attrs(props => ({
   color: black;
   padding: 4px 8px;
   border-radius: 4px;
-  ${props => parseModifiers(props)}
+  ${space}
+  ${layout}
+  ${typography}
+  ${color}
 `
 
 export default InputComponent
