@@ -1,7 +1,6 @@
 import React from 'react'
-import { Text } from 'react-native'
 
-import { Column, Button } from 'src/components'
+import { Column, Button, Text } from 'src/components'
 
 const ProfileScreen = ({ navigation }) => (
   <Column flex={1} justifyContent='center' p={40}>

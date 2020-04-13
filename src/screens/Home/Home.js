@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Text } from 'react-native'
 
-import { Column, Button } from 'src/components'
+import { Column, Button, Text } from 'src/components'
 import { useUser } from 'src/context'
 
 const HomeScreen = ({ navigation }) => {

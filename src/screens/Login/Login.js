@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Text } from 'react-native'
 
-import { Column, Input, Button } from 'src/components'
+import { Column, Input, Button, Text } from 'src/components'
 import { useUser } from 'src/context'
 
 const Login = () => {
