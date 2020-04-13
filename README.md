@@ -14,19 +14,21 @@ Run `react-native init yourProjectName --template nave`
 
 ## Finishing configuration
 
-Add this to your `package.json`
+Add `.env` to your .gitignore file
+
+Add this to your `package.json`:
 
 ```json
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "eslint": "eslint src/**/*.js src/**/**/*.js src/**/**/*.js src/**/**/**/*.js src/**/**/**/**/*.js",
+    "eslint": "eslint '**/*.js'",
     "jest": "jest test --notify --config=jest.json",
     "test": "npm run eslint",
     "commit": "npx git-cz",
     "prettier": "yarn prettier:js && git add .",
-    "prettier:js": "prettier --write *.js src/*.js src/**/*.js src/**/**/*.js src/**/**/**/*.js src/**/**/**/**/*.js"
+    "prettier:js": "prettier --write '**/*.js'"
   },
   "config": {
     "commitizen": {

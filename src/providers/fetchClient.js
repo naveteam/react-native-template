@@ -1,10 +1,10 @@
 import axios from 'axios'
+import Config from 'react-native-config'
 
 import { getToken } from 'src/utils'
-import { API_URL } from 'src/constants'
 
 const provider = axios.create({
-  baseURL: process.env.API_URL || API_URL
+  baseURL: Config.API_URL
 })
 
 provider.interceptors.request.use(async ({ headers, ...config }) => {
