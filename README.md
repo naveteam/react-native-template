@@ -16,7 +16,15 @@ Run `react-native init yourProjectName --template nave`
 
 Add `.env` to your .gitignore file
 
-Add this to your `package.json`:
+You'll also need to manually apply a plugin to your app, from `android/app/build.gradle`:
+
+```
+// 2nd line, add a new apply:
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+```
+
+Finally, add this to your `package.json`:
 
 ```json
   "scripts": {
