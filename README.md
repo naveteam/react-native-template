@@ -31,17 +31,22 @@ Finally, add this to your `package.json`:
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "eslint": "eslint '**/*.js'",
-    "jest": "jest test --notify --config=jest.json",
-    "test": "npm run eslint",
+    "eslint": "eslint --ignore-path .gitignore .",
+    "pretest": "yarn eslint",
+    "test": "echo 'start tests'",
     "commit": "npx git-cz",
-    "prettier": "yarn prettier:js && git add .",
-    "prettier:js": "prettier --write '**/*.js'"
+    "prettier": "prettier --write '**/*.js' --ignore-path .gitignore",
+    "pod:install": "cd ios && pod install && cd .."
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "prettier --write"
+    ]
   }
 ```
 
