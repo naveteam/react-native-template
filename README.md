@@ -1,8 +1,77 @@
 # Nave React Native template.
 
-## Using
+## Project Configuration
 
-Run `react-native init yourProjectName --template nave`
+First of all, as you usually do, run `npx react-native init yourProjectName`
+
+In your *new project*, add these dependencies to your `package.json`:
+
+```json
+"dependencies": {
+    "axios": "^0.19.2",
+    "styled-components": "^5.0.1",
+    "styled-system": "^5.1.5",
+    "@react-navigation/native": "^5.0.9",
+    "@react-navigation/stack": "^5.1.1",
+    "react-native-gesture-handler": "^1.6.0",
+    "react-native-reanimated": "^1.7.0",
+    "react-native-safe-area-context": "^0.7.3",
+    "@react-native-community/masked-view": "^0.1.7",
+    "react-native-screens": "^2.2.0",
+    "react-native-config": "^1.0.0"
+}
+
+"devDependencies": {
+  "@commitlint/cli": "^8.3.5",
+  "@commitlint/config-conventional": "^8.3.4",
+  "babel-eslint": "^10.0.3",
+  "babel-preset-react-native": "^4.0.1",
+  "commitlint": "^8.3.5",
+  "cz-conventional-changelog": "^3.1.0",
+  "husky": "^4.2.1",
+  "jest-react-native": "^18.0.0",
+  "lint-staged": "^10.0.7",
+  "prettier": "^1.19.1",
+  "reactotron-react-native": "^4.0.3",
+  "eslint": "^6.8.0",
+  "eslint-config-prettier": "^6.1.0",
+  "eslint-config-standard": "^14.0.1",
+  "eslint-plugin-import": "^2.18.2",
+  "eslint-plugin-node": "^11.0.0",
+  "eslint-plugin-prettier": "^3.1.0",
+  "eslint-plugin-promise": "^4.2.1",
+  "eslint-plugin-react": "^7.14.3",
+  "eslint-plugin-react-hooks": "^2.0.1",
+  "eslint-plugin-standard": "^4.0.1"
+}
+```
+In your *new project*, remove the currently installed dependencies and install all again
+
+```bash
+# Remove old depencies on your project root folder
+$ rm -rf node_modules
+
+# Install all dependecies using yarn or npm
+$ yarn install
+```
+
+Copy all the following folders and files from this template to your *new project* root folder.
+```
+├── /src
+├── .editorconfig
+├── .eslintrc
+├── .gitignore
+├── .huskyrc.json
+├── .npmignore
+├── .prettier.js
+├── App.js
+├── AuthenticatedApp.js
+├── .commitlint.config.js
+├── index
+├── metro.config.js
+├── ReactotronConfig.js
+├── UnauthenticatedApp.js
+```
 
 ### Packages already configured
 
@@ -16,50 +85,16 @@ Run `react-native init yourProjectName --template nave`
 
 Add `.env` to your .gitignore file
 
-You'll also need to manually apply a plugin to your app, from `android/app/build.gradle`:
-
-```
-// 2nd line, add a new apply:
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
-
-```
-
-Finally, add this to your `package.json`:
-
-```json
-  "scripts": {
-    "start": "react-native start",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "eslint": "eslint --ignore-path .gitignore .",
-    "pretest": "yarn eslint",
-    "test": "echo 'start tests'",
-    "commit": "npx git-cz",
-    "prettier": "prettier --write '**/*.js' --ignore-path .gitignore",
-    "pod:install": "cd ios && pod install && cd .."
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "*.{js, jsx}": [
-      "prettier --write"
-    ]
-  }
-```
-
 ## Code Standard
 
-Além de todos os pontos citadas no [nave guide](https://nave.gitlab.io/guides/nave/code-guide/), como padrão de imports e boas práticas de javascript, existem algumas boas práticas que devem ser usadas, principalmente na criação de componentes e páginas.
+Besides of all the things talked in the [nave guide](https://nave.gitlab.io/guides/nave/code-guide/), as import standards and best practices using Javascript, there are some best practices to be used, mainly in components and pages creation.
 
-1. Evite usar `styleds` desnecessários. Temos componentes de Row, Column e Text para evitar o uso desnecessários de styleds nas páginas. Além disso, estes componentes possuem o [styled-system](https://styled-system.com/getting-started), que permite passar margins, paddings e afins por props;
-2. Ao criar um novo componente, sempre cogite a utilização do `styled-system`;
-3. Sempre adicione as [prop-types](https://github.com/facebook/prop-types) nos componentes. Além de ajudar outras pessoas que forem usar este componente, serve também como documentação;
-4. **NUNCA** repita o mesmo código duas vezes. Não copie e cole. Crie helpers e components. Reutilize código;
-5. Se precisar criar um componente com várias variações, dê uma olha no componente de `Text` e utilize a propriedade `variant` do `styled-system`;
-6. Siga o padrão de pastas e padrão de código. 
+1. Avoid to use unnecessary `styleds`. We already have the Row, Column and Text component deal with that on pages. Besides that, the mentioned components have the [styled-system](https://styled-system.com/getting-started), that allows to pass margins, padding and anothers ones throught `props`.
+2. In a new component creating, always think about the use of `styled-system`.
+3. Always add [prop-types](https://github.com/facebook/prop-types) in your components. This can be used as a guide to another people that will use this component and can also be used as a documentation.
+4. **NEVER** repeat the same code 2 times. Do not copy and paste, instead of this, create some helpers and components. Make your code reusable.
+5. If you need to create a new component with variants, take a look at the `Text` component and use the `variant` prop from the `styled-system`.
+6. Follow the code pattern and folder standard.
 
 Copyright 2019 nave.rs
 
