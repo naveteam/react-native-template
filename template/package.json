@@ -1,0 +1,67 @@
+{
+  "name": "react-native-template-nave",
+  "version": "1.0.0",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "lint": "eslint .",
+    "eslint": "eslint --ignore-path .gitignore .",
+    "pretest": "yarn eslint",
+    "test": "echo 'start tests'",
+    "commit": "npx git-cz",
+    "prettier": "prettier --write '**/*.js' --ignore-path .gitignore",
+    "pod:install": "cd ios && pod install && cd ..",
+    "generate:apk": "cd android && ./gradlew assembleRelease && cd ..",
+    "generate:new-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
+  },
+
+  "dependencies": {
+    "axios": "^0.19.2",
+    "styled-components": "^5.0.1",
+    "styled-system": "^5.1.5",
+    "@react-navigation/native": "^5.0.9",
+    "@react-navigation/stack": "^5.1.1",
+    "react-native-gesture-handler": "^1.6.0",
+    "react-native-reanimated": "^1.7.0",
+    "react-native-safe-area-context": "^0.7.3",
+    "@react-native-community/masked-view": "^0.1.7",
+    "react-native-screens": "^2.2.0",
+    "react-native-config": "^1.0.0",
+    "react": "16.13.1",
+    "react-native": "0.63.2"
+  },
+
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "babel-eslint": "^10.0.3",
+    "babel-preset-react-native": "^4.0.1",
+    "commitlint": "^8.3.5",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.1",
+    "jest-react-native": "^18.0.0",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "reactotron-react-native": "^4.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-standard": "^14.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+
+  "jest": {
+    "preset": "react-native"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
