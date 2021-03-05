@@ -1,89 +1,49 @@
 # Nave React Native template.
 
-## Project Configuration
+## Using
 
-First of all, as you usually do, run `npx react-native init yourProjectName`
-
-In your *new project*, add these dependencies to your `package.json`:
-
-```json
-"dependencies": {
-    "axios": "^0.19.2",
-    "styled-components": "^5.0.1",
-    "styled-system": "^5.1.5",
-    "@react-navigation/native": "^5.0.9",
-    "@react-navigation/stack": "^5.1.1",
-    "react-native-gesture-handler": "^1.6.0",
-    "react-native-reanimated": "^1.7.0",
-    "react-native-safe-area-context": "^0.7.3",
-    "@react-native-community/masked-view": "^0.1.7",
-    "react-native-screens": "^2.2.0",
-    "react-native-config": "^1.0.0"
-}
-
-"devDependencies": {
-  "@commitlint/cli": "^8.3.5",
-  "@commitlint/config-conventional": "^8.3.4",
-  "babel-eslint": "^10.0.3",
-  "babel-preset-react-native": "^4.0.1",
-  "commitlint": "^8.3.5",
-  "cz-conventional-changelog": "^3.1.0",
-  "husky": "^4.2.1",
-  "jest-react-native": "^18.0.0",
-  "lint-staged": "^10.0.7",
-  "prettier": "^1.19.1",
-  "reactotron-react-native": "^4.0.3",
-  "eslint": "^6.8.0",
-  "eslint-config-prettier": "^6.1.0",
-  "eslint-config-standard": "^14.0.1",
-  "eslint-plugin-import": "^2.18.2",
-  "eslint-plugin-node": "^11.0.0",
-  "eslint-plugin-prettier": "^3.1.0",
-  "eslint-plugin-promise": "^4.2.1",
-  "eslint-plugin-react": "^7.14.3",
-  "eslint-plugin-react-hooks": "^2.0.1",
-  "eslint-plugin-standard": "^4.0.1"
-}
-```
-In your *new project*, remove the currently installed dependencies and install all again
-
-```bash
-# Remove old depencies on your project root folder
-$ rm -rf node_modules
-
-# Install all dependecies using yarn or npm
-$ yarn install
-```
-
-Copy all the following folders and files from this template to your *new project* root folder.
-```
-├── /src
-├── .editorconfig
-├── .eslintrc
-├── .gitignore
-├── .huskyrc.json
-├── .npmignore
-├── .prettier.js
-├── App.js
-├── AuthenticatedApp.js
-├── .commitlint.config.js
-├── index
-├── metro.config.js
-├── ReactotronConfig.js
-├── UnauthenticatedApp.js
-```
+Run `react-native init yourProjectName --template nave`
 
 ### Packages already configured
 
 - Styled components
 - React Navigation
 - Axios
-- Reactotron
 - Commitlint
 
 ## Finishing configuration
 
 Add `.env` to your .gitignore file
+
+You'll also need to manually apply a plugin to your app, from `android/app/build.gradle`:
+
+```
+// 2nd line, add a new apply:
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+```
+
+Finally, add this to your `package.json`:
+
+```json
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "commit": "npx git-cz",
+    "podinstall": "npx pod-install ios"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "prettier --write"
+    ]
+  }
+```
 
 ## Code Standard
 

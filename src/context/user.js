@@ -1,48 +1,30 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 
-import { getMe, loginUser } from 'src/services'
-import { getToken, setToken, clearToken } from 'src/utils'
+import { useQuery, useQueryClient, useMutation } from 'react-query'
+
+import { getMe, login as loginService } from 'src/services/user'
+import { setToken, clearToken } from 'src/utils/auth'
 
 const UserContext = React.createContext()
 
-function UserProvider(props) {
-  const [isFetchingUser, setIsFetchingUser] = useState(true)
-  const [user, setUser] = useState(null)
+const UserProvider = props => {
+  const queryClient = useQueryClient()
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token = await getToken()
-      try {
-        if (token) {
-          const userResponse = await getMe()
-          setUser(userResponse)
-        }
-      } catch (error) {
-        console.log('error', error)
-      } finally {
-        setIsFetchingUser(false)
-      }
+  const { data: user, isLoading } = useQuery('user', getMe)
+
+  const { mutate: login } = useMutation(loginService, {
+    onSuccess: async ({ token, ...user }) => {
+      await setToken(token)
+      queryClient.setQueryData('user', user)
     }
-
-    fetchUser()
-  }, [])
-
-  const login = async credentials => {
-    try {
-      const loginResponse = await loginUser(credentials)
-      setToken(loginResponse.token)
-      setUser(loginResponse)
-    } catch (error) {
-      console.log('error', error)
-    }
-  }
+  })
 
   const logout = () => {
     clearToken()
-    setUser(null)
+    queryClient.setQueryData('user', null)
   }
 
-  return <UserContext.Provider value={{ user, setUser, isFetchingUser, login, logout }} {...props} />
+  return <UserContext.Provider value={{ user, isLoading, login, logout }} {...props} />
 }
 
 const useUser = () => useContext(UserContext)

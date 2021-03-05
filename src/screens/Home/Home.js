@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { View, Text } from 'react-native'
 
-import { Column, Button, Text } from 'src/components'
-import { useUser } from 'src/context'
-
-const HomeScreen = ({ navigation }) => {
-  const { logout } = useUser()
+const Home = () => {
   return (
-    <Column flex={1} justifyContent='center' p={40}>
-      <Text>Home!</Text>
-      <Button text='go to profile' onPress={() => navigation.navigate('Profile')} mb={20} />
-      <Button text='sair' onPress={logout} />
-    </Column>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
   )
 }
 
-export default HomeScreen
+export default Home

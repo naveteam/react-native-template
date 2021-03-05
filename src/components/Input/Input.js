@@ -1,7 +1,7 @@
 import { space, layout, typography, color } from 'styled-system'
 import styled from 'styled-components'
 
-const InputComponent = styled.TextInput.attrs((props) => ({
+const InputComponent = styled.TextInput.attrs(props => ({
   autoCapitalize: 'none',
   ...props
 }))`
